@@ -1,0 +1,257 @@
+/* --- App Screen Styles --- */
+
+:root {
+    --app-black: #0A0F18;
+    /* Darker, slightly less harsh black for app */
+    --app-white: #FFFFFF;
+    --app-coral: #ff7365;
+    --app-dark-grey: #1C2536;
+    /* Deep dark grey for app background */
+    --app-light-grey: #4A5B70;
+    /* Lighter grey for text/borders */
+    --app-accent-blue: #58A6FF;
+    /* A subtle blue for interactive elements */
+}
+
+.app-screen {
+    font-family: var(--font-body);
+    background-color: var(--app-dark-grey);
+    /* App background */
+    color: var(--app-white);
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    /* Fixed height for the app screen element */
+    width: 300px;
+    /* Fixed width for the app screen element */
+    border-radius: 25px;
+    /* Rounded corners for the app frame */
+    overflow: hidden;
+    /* Hide content that overflows */
+    position: relative;
+    /* For absolute positioning inside if needed */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Shadow for the app itself */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle border for app */
+}
+
+
+/* --- App Header --- */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Subtle translucent header */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
+    /* Keep header above main content */
+}
+
+.app-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.app-icon {
+    font-size: 1.2em;
+    color: var(--app-light-grey);
+    cursor: pointer;
+}
+
+.app-logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.4em;
+    color: var(--app-white);
+}
+
+.app-header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.app-profile-pic {
+    width: 35px;
+    height: 35px;
+    background-color: var(--app-coral);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--app-white);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+/* --- App Main Content --- */
+
+.app-main {
+    flex-grow: 1;
+    /* Allows main to take available space */
+    padding: 20px;
+    overflow-y: auto;
+    /* Enable scrolling for content */
+}
+
+.app-balance-card {
+    background: rgba(255, 115, 101, 0.1);
+    /* Coral tint for balance card */
+    border: 1px solid rgba(255, 115, 101, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 115, 101, 0.3);
+}
+
+.balance-label {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.balance-amount {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--app-white);
+    margin-bottom: 8px;
+}
+
+.balance-info {
+    font-size: 0.85em;
+    color: var(--app-light-grey);
+}
+
+.app-section-title {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--app-white);
+    margin-bottom: 15px;
+}
+
+.app-gig-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.app-gig-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.gig-details {
+    flex: 1;
+    margin-right: 15px;
+}
+
+.gig-details h3 {
+    font-size: 1.1em;
+    color: var(--app-white);
+    margin-bottom: 5px;
+}
+
+.gig-details p {
+    font-size: 0.85em;
+    color: var(--app-light-grey);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 3px;
+}
+
+.gig-details i {
+    color: var(--app-coral);
+    margin-right: 3px;
+}
+
+.gig-action {
+    text-align: right;
+}
+
+.gig-pay {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--app-coral);
+    margin-bottom: 8px;
+}
+
+.btn-app-accept {
+    background-color: var(--app-coral);
+    color: var(--app-white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 115, 101, 0.4);
+}
+
+.btn-app-accept:hover {
+    background-color: #e05f51;
+}
+
+
+/* --- App Footer (Nav Bar) --- */
+
+.app-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: absolute;
+    /* Stick to bottom */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.app-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--app-light-grey);
+    font-size: 0.75em;
+    transition: color 0.3s ease;
+}
+
+.app-nav-item i {
+    font-size: 1.2em;
+    margin-bottom: 3px;
+}
+
+.app-nav-item.active {
+    color: var(--app-coral);
+    /* Active item in coral */
+}
+
+.app-nav-item:hover {
+    color: var(--app-coral);
+}

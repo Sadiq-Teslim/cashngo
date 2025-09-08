@@ -1,0 +1,160 @@
+/* --- In mockup-styles.css --- */
+
+
+/* ... existing styles ... */
+
+.hero-image-wrapper-mockup {
+    flex: 1;
+    max-width: 50%;
+    /* Give more space to the app screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.glass-effect-mockup {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 25px;
+    /* Bigger rounding for the phone frame */
+    padding: 15px;
+    /* Padding inside the glass frame */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+    /* Make the glass frame take up more height */
+    max-height: 550px;
+    /* Limit max height */
+    overflow: hidden;
+    /* Hide anything that spills out */
+}
+
+
+/* The embedded app screen itself needs to fit within the glass frame */
+
+.glass-effect-mockup .app-screen {
+    width: 100%;
+    /* Make app screen fill its parent (glass-effect-mockup) */
+    height: 100%;
+    /* Make app screen fill its parent */
+    border-radius: 15px;
+    /* Slightly less rounded than the frame */
+    border: none;
+    /* Remove app's own border if it has one */
+    box-shadow: none;
+    /* Remove app's own shadow */
+    background-color: var(--app-dark-grey);
+    /* Ensure app background color is set */
+    overflow: hidden;
+    /* Crucial for rounded corners on app content */
+}
+
+
+/* Adjustments for app-screen-styles.css */
+
+
+/* To ensure app elements look good within the mockup frame */
+
+.app-screen {
+    /* Remove fixed height/width from here, it will be controlled by the parent */
+    height: auto;
+    width: auto;
+    box-shadow: none;
+    /* The parent glass-effect handles the shadow */
+    border: none;
+    /* The parent glass-effect handles the border */
+    background-color: var(--app-dark-grey);
+    /* Ensure background is set */
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    .mockup-container {
+        width: 95%;
+        aspect-ratio: 9 / 16;
+    }
+    .hero-section-for-mockup {
+        padding: 30px 0;
+    }
+    .mockup-content-wrapper {
+        flex-direction: column;
+        width: 85%;
+        height: auto;
+        /* Let content define height */
+    }
+    .hero-content-mockup {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .hero-title-mockup {
+        font-size: 2.5em;
+    }
+    .hero-subtitle-mockup {
+        font-size: 1em;
+    }
+    .hero-cta-mockup {
+        justify-content: center;
+    }
+    .hero-image-wrapper-mockup {
+        max-width: 85%;
+        /* Slightly wider */
+        height: 60%;
+        /* Make app frame take more height when stacked */
+    }
+    .glass-effect-mockup {
+        border-radius: 18px;
+        padding: 12px;
+        height: 100%;
+        /* Fill wrapper */
+    }
+    .glass-effect-mockup .app-screen {
+        border-radius: 12px;
+        /* Less rounded than frame */
+    }
+}
+
+@media (max-width: 480px) {
+    .mockup-container {
+        width: 98%;
+        aspect-ratio: 9 / 17;
+    }
+    .hero-section-for-mockup {
+        padding: 20px 0;
+    }
+    .hero-title-mockup {
+        font-size: 2em;
+    }
+    .hero-subtitle-mockup {
+        font-size: 0.95em;
+    }
+    .btn-primary-mockup,
+    .btn-secondary-mockup {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+    .hero-cta-mockup {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-image-wrapper-mockup {
+        max-width: 100%;
+    }
+    .glass-effect-mockup {
+        border-radius: 15px;
+        padding: 10px;
+        height: 100%;
+    }
+    .glass-effect-mockup .app-screen {
+        border-radius: 10px;
+    }
+}

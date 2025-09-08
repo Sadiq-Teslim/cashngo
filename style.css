@@ -1,4 +1,18 @@
-/* Basic Reset & Global Styles */
+/* --- Global Styles & Resets --- */
+
+:root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --coral: #ff7365;
+    --dark-charcoal: #2c3e50;
+    /* Dark base for blur */
+    --light-grey: #ecf0f1;
+    /* Subtle border color */
+    --darker-charcoal: #1a2a3a;
+    /* Deeper background for some sections */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
 
 * {
     margin: 0;
@@ -7,28 +21,24 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    /* Body font */
+    font-family: var(--font-body);
     line-height: 1.6;
-    color: #FFFFFF;
-    /* Default to white for dark backgrounds */
-    background-color: #000000;
-    /* Black background for the page */
+    color: var(--white);
+    background-color: var(--black);
+    /* Default background */
     overflow-x: hidden;
     /* Prevent horizontal scrollbars */
 }
 
 .container {
     max-width: 1200px;
-    /* Max width of content */
     margin: 0 auto;
-    /* Center the container */
     padding: 0 20px;
-    /* Add some padding on the sides */
+    position: relative;
+    /* For positioning elements within */
+    z-index: 2;
+    /* Ensure content is above background blur */
 }
-
-
-/* Typography */
 
 h1,
 h2,
@@ -36,23 +46,21 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Montserrat', sans-serif;
-    /* Heading font */
+    font-family: var(--font-heading);
     font-weight: 800;
-    /* Boldest weight for Montserrat */
     line-height: 1.2;
-    margin-bottom: 20px;
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 3.8em;
 }
 
-
-/* Adjust as needed */
-
 h2 {
-    font-size: 2.5em;
+    font-size: 2.8em;
+}
+
+h3 {
+    font-size: 1.6em;
 }
 
 p {
@@ -60,157 +68,480 @@ p {
 }
 
 
-/* Slightly larger body text for readability */
+/* --- Glassmorphism Base Class --- */
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    /* Transparent white */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Light border */
+    backdrop-filter: blur(15px);
+    /* The core blur effect */
+    -webkit-backdrop-filter: blur(15px);
+    /* For Safari */
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    /* Soft shadow */
+    padding: 30px;
+}
+
+
+/* --- Buttons --- */
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 10px;
+    /* More rounded for playful feel */
+    text-decoration: none;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Button shadow */
+}
+
+.btn-primary {
+    background-color: var(--coral);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(255, 115, 101, 0.5);
+}
+
+.btn-primary:hover {
+    background-color: #e05f51;
+    color: var(--white);
+    box-shadow: 0 10px 25px rgba(255, 115, 101, 0.7);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: var(--coral);
+    border-color: var(--coral);
+    transform: translateY(-3px);
+}
 
 
 /* --- Hero Section Styles --- */
 
 .hero-section {
-    background-color: #000000;
-    /* Black background for the entire hero */
-    color: #FFFFFF;
-    padding: 80px 0;
-    /* Vertical padding */
-    min-height: 80vh;
-    /* Make it take up a significant portion of the viewport */
+    min-height: 95vh;
+    /* Take up almost full viewport */
     display: flex;
     align-items: center;
-    /* Vertically center content within the hero */
     justify-content: center;
-    /* Horizontally center content if container is narrower */
     position: relative;
-    /* For potential background elements */
     overflow: hidden;
-    /* To contain any absolute positioned elements if added later */
+    color: var(--white);
+    padding: 100px 0;
+}
+
+.hero-background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--black) 0%, var(--darker-charcoal) 60%, #34495e 100%);
+    /* Subtle gradient */
+    z-index: 1;
 }
 
 .hero-section .container {
     display: flex;
-    /* Use flexbox to arrange content and image side-by-side */
     align-items: center;
-    /* Vertically align items in the flex container */
     justify-content: space-between;
-    /* Space out content and image */
-    width: 100%;
-    /* Ensure container takes full width */
+    z-index: 2;
+    /* Ensure content is above gradient */
 }
 
 .hero-content {
     flex: 1;
-    /* Allow content to grow and take available space */
     max-width: 55%;
-    /* Limit width of text content */
-    padding-right: 40px;
-    /* Space between text and image */
+    padding-right: 50px;
 }
 
 .hero-title {
-    font-size: 4em;
-    /* Larger for hero titles */
-    color: #FFFFFF;
-    /* White for main titles */
+    color: var(--white);
     margin-bottom: 0;
-    /* Remove margin as we have two h1s stacked */
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    /* Subtle text shadow for depth */
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow for impact */
 }
 
 .hero-title:last-of-type {
-    /* Style the second h1 specifically */
-    color: #ff7365;
-    /* Accent color for the second part of the title */
-    font-size: 4em;
-    /* Match the first h1 */
+    color: var(--coral);
 }
 
 .hero-subtitle {
     font-size: 1.3em;
-    /* Larger subtitle for impact */
     color: #e0e0e0;
-    /* Slightly off-white for readability on black */
-    margin-top: 15px;
-    margin-bottom: 40px;
-    max-width: 500px;
-    /* Limit subtitle width for better reading */
+    margin-top: 20px;
+    margin-bottom: 50px;
+    max-width: 550px;
 }
 
 .hero-cta {
     display: flex;
-    gap: 20px;
-    /* Space between buttons */
+    gap: 25px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    border-radius: 8px;
-    /* Slightly rounded corners */
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    /* Use heading font for buttons */
-    font-weight: 700;
-    /* Bold buttons */
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-    /* Smooth transitions for hover effects */
-    border: none;
-    /* Remove default button border */
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: #ff7365;
-    /* Primary CTA color */
-    color: #FFFFFF;
-    box-shadow: 0 5px 15px rgba(255, 115, 101, 0.4);
-    /* Subtle shadow for the primary button */
-}
-
-.btn-primary:hover {
-    background-color: #e05f51;
-    /* Darker shade on hover */
-    color: #FFFFFF;
-    box-shadow: 0 8px 20px rgba(255, 115, 101, 0.6);
-    /* More prominent shadow on hover */
-}
-
-.btn-secondary {
-    background-color: transparent;
-    /* No background */
-    color: #FFFFFF;
-    border: 2px solid #FFFFFF;
-    /* White border */
-}
-
-.btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    /* Slight background on hover */
-    color: #ff7365;
-    /* Change text color to accent */
-    border-color: #ff7365;
-    /* Change border color to accent */
-}
-
-.hero-image {
+.hero-image-wrapper {
     flex: 1;
-    /* Allow image to grow */
     max-width: 45%;
-    /* Limit width of image container */
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-effect {
+    /* This applies the glass effect to the image wrapper */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px);
+    /* Stronger blur for hero image */
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 25px;
+    /* More rounded for hero image */
+    padding: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    /* To center image inside */
     justify-content: center;
     align-items: center;
 }
 
 .app-mockup {
     max-width: 100%;
-    /* Ensure image is responsive */
     height: auto;
     display: block;
-    /* Remove extra space below image */
+    border-radius: 10px;
+    /* Slightly less rounded than wrapper */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    /* Inner shadow for the image itself */
+}
+
+
+/* --- Section Title Styling --- */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--white);
+    font-size: 2.8em;
+    position: relative;
+    /* For potential underlines */
+    padding-bottom: 10px;
+    /* Space for underline */
+}
+
+
+/* Optional: Subtle underline for section titles */
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--coral);
+    border-radius: 2px;
+}
+
+
+/* --- Problem Section Styles --- */
+
+.problem-section {
+    padding: 100px 0;
+    background: radial-gradient(ellipse at center, var(--darker-charcoal) 0%, var(--black) 70%);
+    /* Radial gradient background */
+}
+
+.problem-section .section-title {
+    color: var(--white);
+}
+
+.problem-points {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.problem-item {
+    flex: 1;
+    min-width: 280px;
+    /* Minimum width before wrapping */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 300px;
+}
+
+.problem-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 115, 101, 0.2);
+    /* Coral tint background */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border: 2px solid var(--coral);
+    /* Accent border */
+    box-shadow: 0 0 15px rgba(255, 115, 101, 0.4);
+    /* Coral glow */
+}
+
+.problem-icon i {
+    /* Styling for Font Awesome icons */
+    font-size: 30px;
+    color: var(--coral);
+}
+
+.problem-item h3 {
+    font-size: 1.5em;
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.problem-item p {
+    font-size: 1em;
+    color: #d0d0d0;
+    line-height: 1.7;
+}
+
+
+/* --- Solution Section Styles --- */
+
+.solution-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, var(--black) 0%, var(--dark-charcoal) 100%);
+    /* Vertical gradient */
+}
+
+.solution-flow {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.solution-step {
+    flex: 1;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.solution-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    /* Margin to keep arrows from touching cards */
+}
+
+.solution-arrow i {
+    /* Font Awesome arrow */
+    font-size: 40px;
+    color: var(--coral);
+    opacity: 0.7;
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 115, 101, 0.2);
+    /* Coral tint background */
     border-radius: 15px;
-    /* Slightly rounded corners for the mockup */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    /* Strong shadow for the mockup */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 2px solid var(--coral);
+    box-shadow: 0 0 15px rgba(255, 115, 101, 0.4);
+}
+
+.step-icon i {
+    /* Font Awesome icons for steps */
+    font-size: 35px;
+    color: var(--coral);
+}
+
+.solution-step h3 {
+    font-size: 1.4em;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.solution-step p {
+    font-size: 0.95em;
+    color: #d0d0d0;
+    line-height: 1.7;
+}
+
+
+/* --- Features Section Styles --- */
+
+.features-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, var(--dark-charcoal) 0%, var(--black) 100%);
+    /* Dark gradient */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.feature-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    /* Increased padding for better glass card */
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.08);
+    /* Transparent white background */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Light border */
+    backdrop-filter: blur(10px);
+    /* Blur for icon background */
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    /* Soft shadow */
+}
+
+.feature-icon i {
+    /* Font Awesome icons */
+    font-size: 35px;
+    color: var(--coral);
+    /* Coral color for icons */
+}
+
+.feature-item h3 {
+    font-size: 1.3em;
+    color: var(--white);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feature-item p {
+    font-size: 0.95em;
+    color: #d0d0d0;
+    line-height: 1.7;
+}
+
+
+/* --- CTA Section Styles --- */
+
+.cta-section {
+    padding: 100px 0;
+    background: radial-gradient(ellipse at center, var(--black) 0%, var(--darker-charcoal) 70%);
+    /* Similar to problem section */
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+    backdrop-filter: blur(20px);
+    /* Stronger blur for CTA card */
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cta-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.cta-content p {
+    font-size: 1.2em;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+
+/* --- Footer Styles --- */
+
+footer {
+    background-color: var(--black);
+    color: #b0b0b0;
+    padding: 50px 0;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.footer-links,
+.footer-social {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.footer-links a,
+.footer-social a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+    color: var(--coral);
+}
+
+.footer-social i {
+    font-size: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #888888;
 }
 
 
@@ -220,32 +551,85 @@ p {
 /* Tablet and smaller screens */
 
 @media (max-width: 992px) {
+    h1 {
+        font-size: 3em;
+    }
+    h2 {
+        font-size: 2.2em;
+    }
+    h3 {
+        font-size: 1.4em;
+    }
+    p {
+        font-size: 1em;
+    }
     .hero-section .container {
         flex-direction: column;
-        /* Stack content and image vertically */
         text-align: center;
-        /* Center align text */
     }
     .hero-content {
         max-width: 100%;
         padding-right: 0;
-        margin-bottom: 40px;
-        /* Space between content and image when stacked */
+        margin-bottom: 50px;
     }
     .hero-title {
         font-size: 3em;
-        /* Smaller titles for tablets */
+    }
+    .hero-title:last-of-type {
+        font-size: 3em;
     }
     .hero-subtitle {
         font-size: 1.1em;
     }
     .hero-cta {
         justify-content: center;
-        /* Center buttons */
     }
-    .hero-image {
+    .hero-image-wrapper {
         max-width: 70%;
-        /* Image can be a bit larger on tablets */
+    }
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .problem-points,
+    .solution-flow,
+    .features-grid {
+        gap: 25px;
+    }
+    .problem-points {
+        flex-direction: column;
+        align-items: center;
+    }
+    .problem-item {
+        max-width: 90%;
+    }
+    .solution-flow {
+        flex-direction: column;
+        align-items: center;
+    }
+    .solution-arrow {
+        display: none;
+    }
+    /* Hide arrows when stacked */
+    .solution-step {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+    .solution-step:last-child {
+        margin-bottom: 0;
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .cta-content h2 {
+        font-size: 2em;
+    }
+    .cta-content p {
+        font-size: 1.1em;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 
@@ -256,7 +640,15 @@ p {
     h1 {
         font-size: 2.5em;
     }
-    /* Smaller main headings */
+    h2 {
+        font-size: 2em;
+    }
+    h3 {
+        font-size: 1.3em;
+    }
+    p {
+        font-size: 1em;
+    }
     .hero-title {
         font-size: 2.5em;
     }
@@ -266,439 +658,70 @@ p {
     .hero-subtitle {
         font-size: 1em;
     }
+    .hero-image-wrapper {
+        max-width: 90%;
+    }
     .btn {
         padding: 12px 25px;
         font-size: 1em;
     }
-    .hero-image {
-        max-width: 90%;
-        /* Image takes up most of the screen on mobile */
-    }
-}
-
-
-/* Very small screens / special cases */
-
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 60px 0;
-        /* Reduce padding further */
-    }
-    .hero-title {
-        font-size: 2em;
-        /* Even smaller titles for very small screens */
-    }
-    .hero-title:last-of-type {
-        font-size: 2em;
-    }
-    .hero-cta {
-        flex-direction: column;
-        /* Stack buttons vertically */
-        gap: 15px;
-    }
-    .btn-secondary {
-        margin-top: 10px;
-        /* Add slight space if buttons stack */
-    }
-}
-
-
-/* --- Problem Section Styles --- */
-
-.problem-section {
-    background-color: #2c3e50;
-    /* Deep charcoal background for contrast */
-    color: #FFFFFF;
-    padding: 80px 0;
-}
-
-.problem-section .section-title {
-    text-align: center;
-    margin-bottom: 60px;
-    /* Space below the main title */
-    color: #FFFFFF;
-    /* Ensure title is white */
-}
-
-.problem-points {
-    display: flex;
-    justify-content: space-around;
-    /* Distribute items evenly */
-    gap: 30px;
-    /* Space between problem items */
-    flex-wrap: wrap;
-    /* Allow items to wrap on smaller screens */
-}
-
-.problem-item {
-    text-align: center;
-    max-width: 300px;
-    /* Limit width of each item */
-    flex: 1;
-    /* Allow items to grow if space allows */
-    display: flex;
-    flex-direction: column;
-    /* Stack icon, title, and text */
-    align-items: center;
-    /* Center content within the item */
-}
-
-.problem-icon {
-    width: 70px;
-    /* Size of the icon container */
-    height: 70px;
-    background-color: rgba(255, 255, 255, 0.1);
-    /* Subtle background for icon */
-    border-radius: 50%;
-    /* Circular background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-    border: 2px solid #ff7365;
-    /* Accent border for icons */
-}
-
-.problem-icon img {
-    width: 35px;
-    /* Size of the icon itself */
-    height: 35px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-    /* Make SVG white if it's not already */
-    /* If your SVGs are already white, you can remove this filter */
-}
-
-.problem-item h3 {
-    font-size: 1.5em;
-    color: #FFFFFF;
-    margin-bottom: 15px;
-}
-
-.problem-item p {
-    font-size: 1em;
-    color: #e0e0e0;
-    /* Slightly muted white for body text */
-    flex-grow: 1;
-    /* Allows paragraph to take up available space if others are shorter */
-}
-
-
-/* Responsive adjustments for the Problem Section */
-
-@media (max-width: 768px) {
-    .problem-points {
-        flex-direction: column;
-        /* Stack items on smaller screens */
-        align-items: center;
-    }
-    .problem-item {
-        max-width: 90%;
-        /* Allow items to take more width when stacked */
-        margin-bottom: 40px;
-        /* Space between stacked items */
-    }
-    .problem-item:last-child {
-        margin-bottom: 0;
-        /* No extra margin on the last item */
-    }
-    .problem-icon {
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .problem-section {
-        padding: 60px 0;
-    }
-    .problem-section .section-title {
-        font-size: 2em;
-        margin-bottom: 40px;
-    }
-    .problem-item h3 {
-        font-size: 1.3em;
-    }
-    .problem-item p {
-        font-size: 0.95em;
-    }
-}
-
-
-/* --- Solution Section Styles --- */
-
-.solution-section {
-    background-color: #1a2a3a;
-    /* Darker, sophisticated charcoal */
-    color: #FFFFFF;
-    padding: 80px 0;
-    text-align: center;
-}
-
-.solution-section .section-title {
-    margin-bottom: 60px;
-    color: #FFFFFF;
-}
-
-.solution-flow {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    /* Align items to the top */
-    gap: 20px;
-    /* Space between steps and arrows */
-    flex-wrap: wrap;
-    /* Allow wrapping on smaller screens */
-    max-width: 1000px;
-    /* Keep the flow contained */
-    margin: 0 auto;
-    /* Center the flow container */
-}
-
-.solution-step {
-    flex: 1;
-    /* Allow steps to grow */
-    max-width: 250px;
-    /* Max width for each step's content */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.step-icon {
-    width: 80px;
-    /* Slightly larger icons */
-    height: 80px;
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Very subtle background */
-    border-radius: 15px;
-    /* Rounded corners for icon container */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    border: 2px solid #ff7365;
-    /* Accent border for icons */
-}
-
-.step-icon img {
-    width: 40px;
-    /* Icon size */
-    height: 40px;
-    /* If your coral icons are not colored correctly, you might need filters */
-    /* e.g., for a white icon with coral accent: */
-    /* filter: sepia(100%) saturate(70%) hue-rotate(300deg); */
-}
-
-.solution-step h3 {
-    font-size: 1.4em;
-    color: #FFFFFF;
-    margin-bottom: 10px;
-}
-
-.solution-step p {
-    font-size: 0.95em;
-    color: #d0d0d0;
-    /* Slightly muted white */
-}
-
-.solution-arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 10px;
-    /* Add some horizontal margin to arrows */
-}
-
-.solution-arrow img {
-    width: 40px;
-    /* Size of the arrow icon */
-    height: 40px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-    /* Make arrow white */
-}
-
-
-/* Responsive adjustments for the Solution Section */
-
-@media (max-width: 992px) {
-    .solution-flow {
-        flex-direction: column;
-        /* Stack items vertically */
-        align-items: center;
-    }
-    .solution-arrow {
-        display: none;
-        /* Hide arrows when stacked, they disrupt the flow */
-    }
-    .solution-step {
-        max-width: 90%;
-        /* Allow steps to take more width */
-        margin-bottom: 30px;
-        /* Space between stacked steps */
-    }
-    .solution-step:last-child {
-        margin-bottom: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .solution-section {
-        padding: 60px 0;
-    }
-    .solution-section .section-title {
-        font-size: 2em;
-        margin-bottom: 40px;
-    }
-    .step-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 10px;
-    }
-    .step-icon img {
-        width: 30px;
-        height: 30px;
-    }
-    .solution-step h3 {
-        font-size: 1.2em;
-    }
-    .solution-step p {
-        font-size: 0.9em;
-    }
-}
-
-
-/* --- Features Section Styles --- */
-
-.features-section {
-    background-color: #000000;
-    /* Back to black for a strong contrast */
-    color: #FFFFFF;
-    padding: 80px 0;
-}
-
-.features-section .section-title {
-    text-align: center;
-    margin-bottom: 60px;
-    color: #FFFFFF;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 columns of equal width */
-    gap: 40px;
-    /* Space between grid items */
-    max-width: 1100px;
-    /* Limit grid width */
-    margin: 0 auto;
-}
-
-.feature-item {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    /* Internal padding for each item */
-    background-color: rgba(255, 255, 255, 0.03);
-    /* Very subtle background for contrast */
-    border-radius: 10px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    /* Smooth transition on hover */
-}
-
-.feature-item:hover {
-    background-color: rgba(255, 115, 101, 0.08);
-    /* Subtle coral glow on hover */
-    transform: translateY(-5px);
-    /* Lift effect */
-}
-
-.feature-icon {
-    width: 70px;
-    height: 70px;
-    background-color: #ff7365;
-    /* Coral background for icons */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(255, 115, 101, 0.5);
-    /* Coral shadow */
-}
-
-.feature-icon img {
-    width: 35px;
-    height: 35px;
-    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-    /* Make icon white */
-}
-
-.feature-item h3 {
-    font-size: 1.3em;
-    color: #FFFFFF;
-    margin-bottom: 15px;
-    display: flex;
-    /* To align emoji and text */
-    align-items: center;
-    gap: 8px;
-    /* Space between emoji and text */
-}
-
-.feature-item p {
-    font-size: 0.95em;
-    color: #e0e0e0;
-    /* Slightly muted white */
-    line-height: 1.7;
-    /* Increased line height for readability */
-}
-
-
-/* Responsive adjustments for the Features Section */
-
-@media (max-width: 992px) {
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 columns on tablet */
-        gap: 30px;
-    }
-    .feature-item {
-        padding: 15px;
-    }
-}
-
-@media (max-width: 768px) {
     .features-grid {
         grid-template-columns: 1fr;
         /* Single column on mobile */
-        gap: 25px;
-    }
-    .features-section .section-title {
-        font-size: 2em;
-        margin-bottom: 40px;
     }
     .feature-item {
         padding: 20px;
     }
+    .cta-content {
+        padding: 25px;
+    }
+    .cta-content h2 {
+        font-size: 1.8em;
+    }
+    .cta-content p {
+        font-size: 1em;
+    }
 }
 
+
+/* Very small screens */
+
 @media (max-width: 480px) {
-    .features-section {
+    .hero-section {
         padding: 60px 0;
     }
-    .feature-icon {
-        width: 60px;
-        height: 60px;
+    .hero-title {
+        font-size: 2em;
     }
-    .feature-icon img {
-        width: 30px;
-        height: 30px;
+    .hero-title:last-of-type {
+        font-size: 2em;
     }
-    .feature-item h3 {
-        font-size: 1.1em;
-        gap: 5px;
+    .hero-subtitle {
+        font-size: 0.95em;
     }
+    .hero-cta {
+        flex-direction: column;
+    }
+    .btn-secondary {
+        margin-top: 10px;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .problem-item,
+    .solution-step,
+    .feature-item,
+    .cta-content {
+        padding: 20px;
+    }
+    .problem-item p,
+    .solution-step p,
     .feature-item p {
         font-size: 0.9em;
+    }
+    .footer-links,
+    .footer-social {
+        flex-direction: column;
+        gap: 10px;
     }
 }
