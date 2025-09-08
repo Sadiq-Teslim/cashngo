@@ -1,0 +1,704 @@
+/* Basic Reset & Global Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    /* Body font */
+    line-height: 1.6;
+    color: #FFFFFF;
+    /* Default to white for dark backgrounds */
+    background-color: #000000;
+    /* Black background for the page */
+    overflow-x: hidden;
+    /* Prevent horizontal scrollbars */
+}
+
+.container {
+    max-width: 1200px;
+    /* Max width of content */
+    margin: 0 auto;
+    /* Center the container */
+    padding: 0 20px;
+    /* Add some padding on the sides */
+}
+
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    /* Heading font */
+    font-weight: 800;
+    /* Boldest weight for Montserrat */
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3.5em;
+}
+
+
+/* Adjust as needed */
+
+h2 {
+    font-size: 2.5em;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+
+/* Slightly larger body text for readability */
+
+
+/* --- Hero Section Styles --- */
+
+.hero-section {
+    background-color: #000000;
+    /* Black background for the entire hero */
+    color: #FFFFFF;
+    padding: 80px 0;
+    /* Vertical padding */
+    min-height: 80vh;
+    /* Make it take up a significant portion of the viewport */
+    display: flex;
+    align-items: center;
+    /* Vertically center content within the hero */
+    justify-content: center;
+    /* Horizontally center content if container is narrower */
+    position: relative;
+    /* For potential background elements */
+    overflow: hidden;
+    /* To contain any absolute positioned elements if added later */
+}
+
+.hero-section .container {
+    display: flex;
+    /* Use flexbox to arrange content and image side-by-side */
+    align-items: center;
+    /* Vertically align items in the flex container */
+    justify-content: space-between;
+    /* Space out content and image */
+    width: 100%;
+    /* Ensure container takes full width */
+}
+
+.hero-content {
+    flex: 1;
+    /* Allow content to grow and take available space */
+    max-width: 55%;
+    /* Limit width of text content */
+    padding-right: 40px;
+    /* Space between text and image */
+}
+
+.hero-title {
+    font-size: 4em;
+    /* Larger for hero titles */
+    color: #FFFFFF;
+    /* White for main titles */
+    margin-bottom: 0;
+    /* Remove margin as we have two h1s stacked */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Subtle text shadow for depth */
+}
+
+.hero-title:last-of-type {
+    /* Style the second h1 specifically */
+    color: #ff7365;
+    /* Accent color for the second part of the title */
+    font-size: 4em;
+    /* Match the first h1 */
+}
+
+.hero-subtitle {
+    font-size: 1.3em;
+    /* Larger subtitle for impact */
+    color: #e0e0e0;
+    /* Slightly off-white for readability on black */
+    margin-top: 15px;
+    margin-bottom: 40px;
+    max-width: 500px;
+    /* Limit subtitle width for better reading */
+}
+
+.hero-cta {
+    display: flex;
+    gap: 20px;
+    /* Space between buttons */
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 8px;
+    /* Slightly rounded corners */
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    /* Use heading font for buttons */
+    font-weight: 700;
+    /* Bold buttons */
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    /* Smooth transitions for hover effects */
+    border: none;
+    /* Remove default button border */
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #ff7365;
+    /* Primary CTA color */
+    color: #FFFFFF;
+    box-shadow: 0 5px 15px rgba(255, 115, 101, 0.4);
+    /* Subtle shadow for the primary button */
+}
+
+.btn-primary:hover {
+    background-color: #e05f51;
+    /* Darker shade on hover */
+    color: #FFFFFF;
+    box-shadow: 0 8px 20px rgba(255, 115, 101, 0.6);
+    /* More prominent shadow on hover */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    /* No background */
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    /* White border */
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Slight background on hover */
+    color: #ff7365;
+    /* Change text color to accent */
+    border-color: #ff7365;
+    /* Change border color to accent */
+}
+
+.hero-image {
+    flex: 1;
+    /* Allow image to grow */
+    max-width: 45%;
+    /* Limit width of image container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-mockup {
+    max-width: 100%;
+    /* Ensure image is responsive */
+    height: auto;
+    display: block;
+    /* Remove extra space below image */
+    border-radius: 15px;
+    /* Slightly rounded corners for the mockup */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    /* Strong shadow for the mockup */
+}
+
+
+/* --- Responsive Design --- */
+
+
+/* Tablet and smaller screens */
+
+@media (max-width: 992px) {
+    .hero-section .container {
+        flex-direction: column;
+        /* Stack content and image vertically */
+        text-align: center;
+        /* Center align text */
+    }
+    .hero-content {
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 40px;
+        /* Space between content and image when stacked */
+    }
+    .hero-title {
+        font-size: 3em;
+        /* Smaller titles for tablets */
+    }
+    .hero-subtitle {
+        font-size: 1.1em;
+    }
+    .hero-cta {
+        justify-content: center;
+        /* Center buttons */
+    }
+    .hero-image {
+        max-width: 70%;
+        /* Image can be a bit larger on tablets */
+    }
+}
+
+
+/* Mobile screens */
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+    /* Smaller main headings */
+    .hero-title {
+        font-size: 2.5em;
+    }
+    .hero-title:last-of-type {
+        font-size: 2.5em;
+    }
+    .hero-subtitle {
+        font-size: 1em;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+    .hero-image {
+        max-width: 90%;
+        /* Image takes up most of the screen on mobile */
+    }
+}
+
+
+/* Very small screens / special cases */
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 60px 0;
+        /* Reduce padding further */
+    }
+    .hero-title {
+        font-size: 2em;
+        /* Even smaller titles for very small screens */
+    }
+    .hero-title:last-of-type {
+        font-size: 2em;
+    }
+    .hero-cta {
+        flex-direction: column;
+        /* Stack buttons vertically */
+        gap: 15px;
+    }
+    .btn-secondary {
+        margin-top: 10px;
+        /* Add slight space if buttons stack */
+    }
+}
+
+
+/* --- Problem Section Styles --- */
+
+.problem-section {
+    background-color: #2c3e50;
+    /* Deep charcoal background for contrast */
+    color: #FFFFFF;
+    padding: 80px 0;
+}
+
+.problem-section .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    /* Space below the main title */
+    color: #FFFFFF;
+    /* Ensure title is white */
+}
+
+.problem-points {
+    display: flex;
+    justify-content: space-around;
+    /* Distribute items evenly */
+    gap: 30px;
+    /* Space between problem items */
+    flex-wrap: wrap;
+    /* Allow items to wrap on smaller screens */
+}
+
+.problem-item {
+    text-align: center;
+    max-width: 300px;
+    /* Limit width of each item */
+    flex: 1;
+    /* Allow items to grow if space allows */
+    display: flex;
+    flex-direction: column;
+    /* Stack icon, title, and text */
+    align-items: center;
+    /* Center content within the item */
+}
+
+.problem-icon {
+    width: 70px;
+    /* Size of the icon container */
+    height: 70px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Subtle background for icon */
+    border-radius: 50%;
+    /* Circular background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border: 2px solid #ff7365;
+    /* Accent border for icons */
+}
+
+.problem-icon img {
+    width: 35px;
+    /* Size of the icon itself */
+    height: 35px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    /* Make SVG white if it's not already */
+    /* If your SVGs are already white, you can remove this filter */
+}
+
+.problem-item h3 {
+    font-size: 1.5em;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.problem-item p {
+    font-size: 1em;
+    color: #e0e0e0;
+    /* Slightly muted white for body text */
+    flex-grow: 1;
+    /* Allows paragraph to take up available space if others are shorter */
+}
+
+
+/* Responsive adjustments for the Problem Section */
+
+@media (max-width: 768px) {
+    .problem-points {
+        flex-direction: column;
+        /* Stack items on smaller screens */
+        align-items: center;
+    }
+    .problem-item {
+        max-width: 90%;
+        /* Allow items to take more width when stacked */
+        margin-bottom: 40px;
+        /* Space between stacked items */
+    }
+    .problem-item:last-child {
+        margin-bottom: 0;
+        /* No extra margin on the last item */
+    }
+    .problem-icon {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .problem-section {
+        padding: 60px 0;
+    }
+    .problem-section .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .problem-item h3 {
+        font-size: 1.3em;
+    }
+    .problem-item p {
+        font-size: 0.95em;
+    }
+}
+
+
+/* --- Solution Section Styles --- */
+
+.solution-section {
+    background-color: #1a2a3a;
+    /* Darker, sophisticated charcoal */
+    color: #FFFFFF;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.solution-section .section-title {
+    margin-bottom: 60px;
+    color: #FFFFFF;
+}
+
+.solution-flow {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* Align items to the top */
+    gap: 20px;
+    /* Space between steps and arrows */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+    max-width: 1000px;
+    /* Keep the flow contained */
+    margin: 0 auto;
+    /* Center the flow container */
+}
+
+.solution-step {
+    flex: 1;
+    /* Allow steps to grow */
+    max-width: 250px;
+    /* Max width for each step's content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-icon {
+    width: 80px;
+    /* Slightly larger icons */
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Very subtle background */
+    border-radius: 15px;
+    /* Rounded corners for icon container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 2px solid #ff7365;
+    /* Accent border for icons */
+}
+
+.step-icon img {
+    width: 40px;
+    /* Icon size */
+    height: 40px;
+    /* If your coral icons are not colored correctly, you might need filters */
+    /* e.g., for a white icon with coral accent: */
+    /* filter: sepia(100%) saturate(70%) hue-rotate(300deg); */
+}
+
+.solution-step h3 {
+    font-size: 1.4em;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.solution-step p {
+    font-size: 0.95em;
+    color: #d0d0d0;
+    /* Slightly muted white */
+}
+
+.solution-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    /* Add some horizontal margin to arrows */
+}
+
+.solution-arrow img {
+    width: 40px;
+    /* Size of the arrow icon */
+    height: 40px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    /* Make arrow white */
+}
+
+
+/* Responsive adjustments for the Solution Section */
+
+@media (max-width: 992px) {
+    .solution-flow {
+        flex-direction: column;
+        /* Stack items vertically */
+        align-items: center;
+    }
+    .solution-arrow {
+        display: none;
+        /* Hide arrows when stacked, they disrupt the flow */
+    }
+    .solution-step {
+        max-width: 90%;
+        /* Allow steps to take more width */
+        margin-bottom: 30px;
+        /* Space between stacked steps */
+    }
+    .solution-step:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .solution-section {
+        padding: 60px 0;
+    }
+    .solution-section .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .step-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+    .step-icon img {
+        width: 30px;
+        height: 30px;
+    }
+    .solution-step h3 {
+        font-size: 1.2em;
+    }
+    .solution-step p {
+        font-size: 0.9em;
+    }
+}
+
+
+/* --- Features Section Styles --- */
+
+.features-section {
+    background-color: #000000;
+    /* Back to black for a strong contrast */
+    color: #FFFFFF;
+    padding: 80px 0;
+}
+
+.features-section .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #FFFFFF;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns of equal width */
+    gap: 40px;
+    /* Space between grid items */
+    max-width: 1100px;
+    /* Limit grid width */
+    margin: 0 auto;
+}
+
+.feature-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    /* Internal padding for each item */
+    background-color: rgba(255, 255, 255, 0.03);
+    /* Very subtle background for contrast */
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    /* Smooth transition on hover */
+}
+
+.feature-item:hover {
+    background-color: rgba(255, 115, 101, 0.08);
+    /* Subtle coral glow on hover */
+    transform: translateY(-5px);
+    /* Lift effect */
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background-color: #ff7365;
+    /* Coral background for icons */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(255, 115, 101, 0.5);
+    /* Coral shadow */
+}
+
+.feature-icon img {
+    width: 35px;
+    height: 35px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    /* Make icon white */
+}
+
+.feature-item h3 {
+    font-size: 1.3em;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+    display: flex;
+    /* To align emoji and text */
+    align-items: center;
+    gap: 8px;
+    /* Space between emoji and text */
+}
+
+.feature-item p {
+    font-size: 0.95em;
+    color: #e0e0e0;
+    /* Slightly muted white */
+    line-height: 1.7;
+    /* Increased line height for readability */
+}
+
+
+/* Responsive adjustments for the Features Section */
+
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on tablet */
+        gap: 30px;
+    }
+    .feature-item {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        /* Single column on mobile */
+        gap: 25px;
+    }
+    .features-section .section-title {
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+    .feature-item {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .features-section {
+        padding: 60px 0;
+    }
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .feature-icon img {
+        width: 30px;
+        height: 30px;
+    }
+    .feature-item h3 {
+        font-size: 1.1em;
+        gap: 5px;
+    }
+    .feature-item p {
+        font-size: 0.9em;
+    }
+}
